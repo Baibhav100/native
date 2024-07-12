@@ -5,7 +5,7 @@ const dotenv = require('dotenv');
 const app = express();
 
 dotenv.config();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 80;
 
 app.use(cors());
 app.use(express.json());
@@ -108,6 +108,13 @@ app.put('/update/:id', (req, res) => {
     }
   );
 });
+
+app.get('/status', (req, res) => {
+  res.status(200).json({
+    message: 'Server is running successfully!',
+  });
+});
+
 
 // Starting the server
 app.listen(PORT, () => {
